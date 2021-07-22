@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <!--用户输入-->
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import focus from "@/directives/focus";
 export default {
   props: ["value"],
   methods: {
@@ -27,6 +29,11 @@ export default {
     onInput(e) {
       this.$emit("input", e.target.value);
     },
+  },
+
+  // 组件内部引入自定义指令
+  directives: {
+    focus: focus,
   },
   // mounted() {
   //     this.$refs.inp.focus();

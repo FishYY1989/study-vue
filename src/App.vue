@@ -47,10 +47,18 @@
 </template>
 
 <script>
-import CourseList from "./components/CourseList.vue";
-import message from "./components/Message.vue";
-import CourseAdd from "./components/CourseAdd.vue";
-import { getCourses } from "./api/course";
+import CourseList from "@/components/CourseList.vue";
+import message from "@/components/Message.vue";
+import CourseAdd from "@/components/CourseAdd.vue";
+import { getCourses } from "@/api/course";
+// import focus from "@/directives/focus";
+import Vue from "vue";
+
+//总线
+Vue.prototype.$bus = new Vue();
+
+// 全局引入自定义指令
+// Vue.directive("focus", focus);
 
 export default {
   name: "App",
@@ -77,7 +85,7 @@ export default {
     addCourse() {
       if (this.course) {
         //添加course到数组
-        this.courses.push({ name: this.course, price: 0});
+        this.courses.push({ name: this.course, price: 0 });
         this.course = "";
 
         //显示提示信息
@@ -113,7 +121,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+a {
+  color: $color;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
