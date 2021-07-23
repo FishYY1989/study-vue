@@ -8,13 +8,11 @@
                 </div> -->
 
     <!--style-->
-    <div class="['course-list', $style.red]" v-else>
+    <div :class="['course-list', $style.red]" v-else>
       <div
         v-for="c in courses"
         :key="c.name"
-        :style="{
-          backgroundColor: selectedCourse === c ? '#ddd' : 'transparent',
-        }"
+        :class="{[$style.active]: selectedCourse === c}"
         @click="selectedCourse = c"
       >
         {{ c.name }} - {{ c.price | currency("$") }}
