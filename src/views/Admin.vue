@@ -104,6 +104,13 @@ export default {
       });
     },
   },
+  beforeRouteEnter(to, from, next) {
+    if (window.isLogin) {
+      next();
+    } else {
+      next("/login?redirect=" + to.fullPath);
+    }
+  },
   computed: {
     total() {
       //计算属性有缓存性：如果值没有发生变化，则页面不会重新渲染

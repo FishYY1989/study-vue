@@ -33,14 +33,14 @@ const routes = [
     meta: {
       auth: true
     },
-    beforeEnter(to, from, next) {
-      //是否登录
-      if (window.isLogin) {
-        next()
-      } else {
-        next('/login?redirect=' + to.fullPath)
-      }
-    }
+    // beforeEnter(to, from, next) {
+    //   //是否登录
+    //   if (window.isLogin) {
+    //     next()
+    //   } else {
+    //     next('/login?redirect=' + to.fullPath)
+    //   }
+    // }
   },
   {
     path: '/course/:name',
