@@ -7,7 +7,14 @@
 
 <script>
 export default {
-    
+  watch: {
+    $route: {
+      immediate: true,
+      handler() {
+        console.log("获取详情");
+      },
+    },
+  },
 };
 </script>
 
