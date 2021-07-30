@@ -32,6 +32,14 @@ const routes = [
     ],
     meta: {
       auth: true
+    },
+    beforeEnter(to, from, next) {
+      //是否登录
+      if (window.isLogin) {
+        next()
+      } else {
+        next('/login?redirect=' + to.fullPath)
+      }
     }
   },
   {
@@ -52,18 +60,18 @@ const router = new VueRouter({
 })
 
 //全局守卫
-router.beforeEach((to, from, next) => {
-  //判断路由是否需要守卫
-  //meta数据的方式
-  if (to.meta.auth) {
-    //是否登录
-    if (window.isLogin) {
-      next()
-    } else {
-      next('/login?redirect=' + to.fullPath)
-    }
-  } else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   //判断路由是否需要守卫
+//   //meta数据的方式
+//   if (to.meta.auth) {
+//     //是否登录
+//     if (window.isLogin) {
+//       next()
+//     } else {
+//       next('/login?redirect=' + to.fullPath)
+//     }
+//   } else {
+//     next()
+//   }
+// })
 export default router
