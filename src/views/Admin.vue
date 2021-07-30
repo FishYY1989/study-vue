@@ -63,6 +63,7 @@ Vue.prototype.$bus = new Vue();
 // 全局引入自定义指令
 // Vue.directive("focus", focus);
 export default {
+  name: "admin",
   components: {
     CourseList,
     message,
@@ -103,6 +104,12 @@ export default {
         this.$set(c, "price", this.price);
       });
     },
+  },
+  activated() {
+    console.log("activated");
+  },
+  deactivated() {
+    console.log("deactivated");
   },
   // //组件路由守卫
   // beforeRouteEnter(to, from, next) {
