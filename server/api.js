@@ -9,3 +9,6 @@ app.get('/api/courses', (req, res) => {
 })
 
 app.listen(3000)
+
+//启动接口服务器
+//node ./server/api.js

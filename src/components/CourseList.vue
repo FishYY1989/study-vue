@@ -12,10 +12,12 @@
       <div
         v-for="c in courses"
         :key="c.name"
-        :class="{[$style.active]: selectedCourse === c}"
-        @click="selectedCourse = c"
-      >
-        {{ c.name }} - {{ c.price | currency("$") }}
+        :class="{ [$style.active]: selectedCourse === c }"
+        @click="selectedCourse = c">
+        <!-- <router-link :to="`/course/${c.name}`"> -->
+        <router-link :to="`/admin/course/${c.name}`">
+          {{ c.name }} - {{ c.price | currency("$") }}
+        </router-link>
       </div>
     </div>
   </div>
