@@ -13,11 +13,12 @@
         v-for="c in courses"
         :key="c.name"
         :class="{ [$style.active]: selectedCourse === c }"
-        @click="selectedCourse = c">
+        @click="onClick(c)">
+        {{ c.name }} - {{ c.price | currency("￥") }}
         <!-- <router-link :to="`/course/${c.name}`"> -->
-        <router-link :to="`/admin/course/${c.name}`">
+        <!-- <router-link :to="`/admin/course/${c.name}`">
           {{ c.name }} - {{ c.price | currency("$") }}
-        </router-link>
+        </router-link> -->
       </div>
     </div>
   </div>
@@ -42,6 +43,16 @@ export default {
     currency(value, symbol = "￥") {
       return symbol + value;
     },
+  },
+  methods: {
+    onClick(c) {
+      this.selectedCourse = c; 
+      // this.$router.push(`/admin/course/${c.name}`)
+      this.$router.push({
+        name: 'detail',
+        params: {name: c.name}
+      })
+    }
   },
 };
 </script>
