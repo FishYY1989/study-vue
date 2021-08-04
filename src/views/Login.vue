@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
   methods: {
     login() {
@@ -13,8 +15,8 @@ export default {
       //提交mutation变更状态
       // this.$store.commit('user/login')
       //派发动作，触发actions
-      this.$store
-        .dispatch("user/login", "admin")
+      // this.$store.dispatch("user/login", "admin")
+      this["user/login"]("admin")
         .then(() => {
           //动态添加路由
           this.$router.addRoutes([
@@ -46,11 +48,13 @@ export default {
       this.$store.commit("user/logout");
       this.$router.push("/");
     },
+    ...mapActions(["user/login", "user/logout"]),
   },
   computed: {
-    isLogin() {
-      return this.$store.state.user.isLogin;
-    },
+    // isLogin() {
+    //   return this.$store.state.user.isLogin;
+    // }
+    ...mapState("user", ["isLogin"]),
   },
 };
 </script>
